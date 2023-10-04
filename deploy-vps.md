@@ -13,23 +13,34 @@ sudo apt upgrade
 ## Устанавливаем PHP
 
 ```
-Предоставляет несколько полезных сценариев для добавления и удаления PPA (Personal Package Archive)
-sudo apt install software-properties-common
-
-Добавлаем репозиторий пакетов
-sudo add-apt-repository ppa:ondrej/php
-
-Обновлаяем пакеты
-sudo apt update
 
 Сам php с драйверами
-sudo apt install php8.2 php8.2-xml php8.2-curl php8.2-gd php8.2-imagick php8.2-cli  php8.2-mbstring
-
+sudo apt install php-fpm php-mbstring php-xml php-bcmath php-curl php-mysql
 ```
 ## Установка mysql
 
 ```
-sudo apt mysql-server
+sudo apt install mysql-server
+
+Создаем бд
+CREATE DATABASE laravel_db;
+
+Создаем юзера
+CREATE USER 'dkyshka'@'%' IDENTIFIED WITH mysql_native_password BY 'agdepassword';
+
+Даем полные права на эту бд, но на создания другой бд и т.д. у него прав нет, только у root юзера
+GRANT ALL ON laravel_db.* TO 'dkyshka'@'%';
+
+Выходим
+exit
+
+Заходим под этим юзером
+mysql -u dkyshka -p
+agdepassword
+
+Проверяем отображения базы
+SHOW DATABASES;
+
 ```
 
 ## Установка NGINX сервера
@@ -41,13 +52,13 @@ sudo apt install nginx
 > тут будет находится конфигурационный файл для Nginx
 
 --- 
-### Устанавливаем консольный редактор Nano для редактирования файлов.
+### Устанавливаем консольный редактор Nano если его нет, для редактирования файлов.
 > создаем конфигурационный файл например "laravel-api.com"
 ---
 ### Вставляем конфиг
 > https://laravel.com/docs/10.x/deployment
 
-Меняем server_name на домен
+Меняем server_name на домен либо ip
 Меняем root путь до директории проекта лежащего в /var/www/laravel-api.com/public
 
 ```
@@ -62,12 +73,22 @@ sudo apt install composer
 
 ---
 
-### Далее устанавливаем laravel в директорию /var/www/laravel-api.com/
+### Далее устанавливаем laravel в директорию /var/www/laravel-api.com/ либо клонируем репозиторий с git
 
 ```
 composer create-project laravel/laravel .
 ```
 ---
+
+### Установка Git
+
+```
+git -v
+
+sudo apt install git
+
+git -v
+```
 
 ### Далее создаём симлинк (символическая ссылка), с папки sites-available (сайты доступны) до sites-enable (сайты включены)
 
@@ -78,5 +99,7 @@ sudo ln -s /etc/nginx/site-available/laravel-api.com /etc/nginx/sites-enabled/
 ### Перезагружаем Nginx
 
 ```
-nginx -s reload
+sudo nginx -t
+sudo service nginx restart
+
 ```
