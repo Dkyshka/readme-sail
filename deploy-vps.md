@@ -83,11 +83,11 @@ composer create-project laravel/laravel .
 ### Установка Git
 
 ```
-git -v
+git --version
 
 sudo apt install git
 
-git -v
+git --version
 ```
 
 ### Далее создаём симлинк (символическая ссылка), с папки sites-available (сайты доступны) до sites-enable (сайты включены)
@@ -103,3 +103,22 @@ sudo nginx -t
 sudo service nginx restart
 
 ```
+### Размещение нескольких сайтов
+> Прописываем конфиг для нового проекта в /etc/nginx/sites-available/ с новым портом, либо другим доменом
+
+```
+server {
+    listen 90;
+    server_name 91.222.236.123;
+
+    root /var/www/travellist-front;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    error_page 404 /error404.html;
+}
+```
+> Прокидываем симлинк, размещаем проект в /var/www/new-project
