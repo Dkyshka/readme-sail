@@ -12,9 +12,9 @@ sudo apt upgrade
 
 ## Устанавливаем PHP
 
-```
+> Сам php с драйверами
 
-Сам php с драйверами
+```
 sudo apt install php-fpm php-mbstring php-xml php-bcmath php-curl php-mysql
 ```
 ## Установка mysql
