@@ -83,12 +83,38 @@ composer create-project laravel/laravel .
 ### Установка Git
 
 ```
-git --version
+Проверяем на наличие:
+git --version 
 
 sudo apt install git
-
 git --version
+
 ```
+
+> Указываем глобально user.name / user.email
+```
+git config --global user.name "имя"
+git config --global user.email test@gmail.com
+
+```
+
+### Создаём SSH ключ для взаимодействие с приватным репозиторием
+```
+ssh-keygen -t rsa
+
+cat /root/.ssh/id_rsa.pub
+
+```
+> Добавляем ключ в репозиторий
+
+> Проверяем подключение
+
+```
+ssh -i /root/.ssh/id_rsa git@github.com
+
+```
+> git clone git@github.com:Dkyshka/Laravel_api_backend.git
+
 
 ### Далее создаём симлинк (символическая ссылка), с папки sites-available (сайты доступны) до sites-enable (сайты включены)
 
