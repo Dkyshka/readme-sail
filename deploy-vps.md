@@ -1,3 +1,14 @@
+## Подключаемся по ssh
+
+```
+ssh root@ip...
+
+В случае ошибки:
+
+ssh-keygen -R ip...
+
+```
+
 ## Обновляем все зависимости, пакеты
 ```
 sudo apt update
@@ -94,6 +105,26 @@ composer create-project laravel/laravel .
 ```
 ---
 
+### Первоначальная настройка Laravel проекта
+> Копируем .env.example в .env
+
+```
+cp .env.example .env
+```
+> Устанавливаем зависимости:
+```
+composer update
+```
+> Генерируем ключ Laravel
+```
+php artisan key:generate
+```
+> Генерируем jwt ключ
+```
+php artisan jwt:secret
+```
+---
+
 ### Установка Git
 
 ```
@@ -111,6 +142,8 @@ git config --global user.name "имя"
 git config --global user.email test@gmail.com
 
 ```
+
+---
 
 ### Создаём SSH ключ для взаимодействие с приватным репозиторием
 ```
