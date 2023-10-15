@@ -68,6 +68,17 @@ sudo apt install nginx
 server_name laravel-api.com www.laravel-api.com
 root /var/www/laravel-api.com/public
 ```
+
+---
+
+### Далее создаём симлинк (символическая ссылка), с папки sites-available (сайты доступны) до sites-enable (сайты включены)
+
+```
+sudo ln -s /etc/nginx/site-available/laravel-api.com /etc/nginx/sites-enabled/
+```
+
+---
+
 ### Установка Composer
 
 ```
@@ -118,12 +129,6 @@ ssh -i /root/.ssh/id_rsa git@github.com
 ```
 > git clone git@github.com:Dkyshka/Laravel_api_backend.git
 
-
-### Далее создаём симлинк (символическая ссылка), с папки sites-available (сайты доступны) до sites-enable (сайты включены)
-
-```
-sudo ln -s /etc/nginx/site-available/laravel-api.com /etc/nginx/sites-enabled/
-```
 
 ### Перезагружаем Nginx
 
