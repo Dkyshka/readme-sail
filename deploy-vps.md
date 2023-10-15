@@ -22,23 +22,26 @@ sudo apt install php-fpm php-mbstring php-xml php-bcmath php-curl php-mysql
 ```
 sudo apt install mysql-server
 
-Создаем бд
+Заходим в mysql:
+sudo mysql
+
+Создаем бд:
 CREATE DATABASE laravel_db;
 
-Создаем юзера
+Создаем юзера:
 CREATE USER 'dkyshka'@'%' IDENTIFIED WITH mysql_native_password BY 'agdepassword';
 
-Даем полные права на эту бд, но на создания другой бд и т.д. у него прав нет, только у root юзера
+Даем полные права на эту бд, но на создания другой бд и т.д. у него прав нет, только у root юзера:
 GRANT ALL ON laravel_db.* TO 'dkyshka'@'%';
 
-Выходим
+Выходим:
 exit
 
-Заходим под этим юзером
+Заходим под этим юзером:
 mysql -u dkyshka -p
 agdepassword
 
-Проверяем отображения базы
+Проверяем отображения базы:
 SHOW DATABASES;
 
 ```
