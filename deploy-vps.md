@@ -67,7 +67,7 @@ sudo apt install nginx
 
 --- 
 ### Устанавливаем консольный редактор Nano если его нет, для редактирования файлов.
-> создаем конфигурационный файл например "laravel-api.com"
+> создаем конфигурационный файл например "laravel-api"
 ---
 ### Вставляем конфиг
 > https://laravel.com/docs/10.x/deployment
@@ -77,7 +77,7 @@ sudo apt install nginx
 
 ```
 server_name laravel-api.com www.laravel-api.com
-root /var/www/laravel-api.com/public
+root /var/www/laravel-api/public
 ```
 
 ---
@@ -115,16 +115,21 @@ cp .env.example .env
 ```
 composer install --ignore-platform-reqs --no-dev
 ```
-> Генерируем ключ Laravel
+> Генерируем ключ Laravel:
 ```
 php artisan key:generate
 ```
-> Генерируем jwt ключ
+> Генерируем jwt ключ:
 ```
 php artisan jwt:secret
 ```
----
+> Даём права на запись в директории кэша, storage:
+```
+sudo chown -R www-data.www-data /var/www/laravel-api/storage
+sudo chown -R www-data.www-data /var/www/laravel-api/bootstrap/cache
+```
 
+---
 ### Установка Git
 
 ```
