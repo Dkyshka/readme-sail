@@ -85,7 +85,7 @@ root /var/www/laravel-api/public
 ### Далее создаём симлинк (символическая ссылка), с папки sites-available (сайты доступны) до sites-enable (сайты включены)
 
 ```
-sudo ln -s /etc/nginx/site-available/laravel-api.com /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/laravel-api.com /etc/nginx/sites-enabled/
 ```
 
 ---
