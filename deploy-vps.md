@@ -129,7 +129,13 @@ php artisan migrate --seed
 ```
 > В случае ошибки кодировки, длины, вставляем по умолчанию в /app/Providers/AppServiceProvider.php:
 ```
-Schema::defaultStringLength(191);
+use Illuminate\Support\Facades\Schema;
+...
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
 ```
 > Даём права на запись в директории кэша, storage:
 ```
