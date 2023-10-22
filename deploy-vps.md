@@ -123,6 +123,14 @@ php artisan key:generate
 ```
 php artisan jwt:secret
 ```
+> Запускаем миграцию и сиды:
+```
+php artisan migrate --seed
+```
+> В случае ошибки кодировки, длины, вставляем по умолчанию в /app/Providers/AppServiceProvider.php:
+```
+Schema::defaultStringLength(191);
+```
 > Даём права на запись в директории кэша, storage:
 ```
 sudo chown -R www-data.www-data /var/www/laravel-api/storage
